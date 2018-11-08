@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Food</string>
+    <array name="food_images">
+        <item>@drawable/bcb</item>
+        <item>@drawable/las</item>
+        <item>@drawable/macncheese</item>
+        <item>@drawable/jcc</item>
+        <item>@drawable/icb</item>
+        <item>@drawable/chai</item>
+        <item>@drawable/liit</item>
+    </array>
+</resources>
