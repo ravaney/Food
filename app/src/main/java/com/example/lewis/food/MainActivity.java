@@ -1,5 +1,10 @@
 package com.example.lewis.food;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.session.PlaybackState;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +14,7 @@ import android.util.EventLogTags;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -27,9 +33,17 @@ public class MainActivity extends AppCompatActivity {
     private TextView Description;
 
     private String[] defaultitems = {"Beer Cheese Burger", "Lasagna", "Mac'n Cheese", "Jamaican Christmas Cake", "Irish Car Bomb", "Spiced Chai", "Long Island Iced Tea"};
+    String selectedfood = "null";
+    BroadcastReceiver receiver;
 
+    IntentFilter filter1 = new IntentFilter();
+    //filter1.addAction("Intent.I_AM_HOME");
 
-   // public Integer[] defaultpics = { R.drawable.bcb,R.drawable.las, R.drawable.macncheese,R.drawable.jcc,R.drawable.icb,R.drawable.chai,R.drawable.liit };
+    @Override
+    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
+        return super.registerReceiver(receiver, filter);
+    }
+    // public Integer[] defaultpics = { R.drawable.bcb,R.drawable.las, R.drawable.macncheese,R.drawable.jcc,R.drawable.icb,R.drawable.chai,R.drawable.liit };
 
 private void getimagebitmaps(){
     imgURL.add("https://bit.ly/2DtN2Xs");
@@ -42,9 +56,22 @@ private void getimagebitmaps(){
 
 }
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Toast.makeText(context,"Happy Cooking "+selectedfood,Toast.LENGTH_SHORT).show();
+                openActivity3();
+            }
+        };
+
+        filter1 = new IntentFilter();
+        filter1.addAction("I_AM_HOME");
+        registerReceiver(receiver,filter1);
 
         getimagebitmaps();
 
@@ -72,6 +99,11 @@ private void getimagebitmaps(){
                 mRecyclerView.smoothScrollToPosition(wordListSize);
             }
         });
+    }
+
+    public void openActivity3(){
+        Intent intent2 = new Intent(this,activity3.class);
+        startActivity(intent2);
     }
 
 }
