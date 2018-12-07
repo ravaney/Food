@@ -57,13 +57,15 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     @Override
     public void onBindViewHolder(@NonNull WordListAdapter.WordViewHolder holder, int position) {
-        Glide.with(mcontext)  .asBitmap().load(mImages.get(position)) .into(holder.img)  ;
+        Glide.with(mcontext)
+                .asBitmap()
+                .load(mImages.get(position)).into(holder.img) ;
         //holder.imagename.setText(mImages.get)
         String mCurrent = mWordList.get(position);
         holder.wordItemView.setText(mCurrent);
         holder.description.setText(mCurrent);
     }
-
+// To fix images properly, figure out how to centre crop images in glide 4.8
     @Override
     public int getItemCount() {
         return mWordList.size();
@@ -95,6 +97,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
             mWordList.set(mPosition, "Clicked! " + element);
             //mAdapter.notifyDataSetChanged();
         }
+
+
     }
 
 

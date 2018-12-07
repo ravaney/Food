@@ -1,10 +1,13 @@
 package com.example.lewis.food;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.load.resource.bitmap.BitmapDrawableResource;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -171,7 +174,7 @@ public class activity3 extends AppCompatActivity {
 
         getrecipes();
         getimagebitmaps();
-        randomise();
+        //randomise();
 
 
     }
@@ -179,15 +182,15 @@ public class activity3 extends AppCompatActivity {
     public void randomise(){
         int min = 0;
         int max = 7;
-        int random = new Random().nextInt((max-min)+1)+min;
+        Random randoms = new Random();//.nextInt((max-min)+1)+min;
+        int random = randoms.nextInt(7);
         txt1 = findViewById(R.id.txt1);
         txt2 = findViewById(R.id.txt2);
         img = findViewById(R.id.img);
 
         txt1.setText(randoitems[random]);
         txt2.setText(recipes[random]);
-        //img.setImageResource(imgURL.get(random));
-
+//        img.setImageResource(imgURL.get(random));
 
     }
 }
