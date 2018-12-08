@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView Description;
 
     private String[] defaultitems = {"Beer Cheese Burger", "Lasagna", "Mac'n Cheese", "Jamaican Christmas Cake", "Irish Car Bomb", "Spiced Chai", "Long Island Iced Tea"};
-    String selectedfood = "null";
+    String selectedfood = ":)";
     BroadcastReceiver receiver;
 
     IntentFilter filter1 = new IntentFilter();
